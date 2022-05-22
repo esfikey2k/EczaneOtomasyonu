@@ -3,7 +3,9 @@ package com.safakkurt.eczaneotomasyonu.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.widget.Toast
+import com.safakkurt.eczaneotomasyonu.InfoMedicineRecycler
 
 import com.safakkurt.eczaneotomasyonu.databinding.ActivityMainBinding
 import com.safakkurt.eczaneotomasyonu.ilaclarmv.imodel.MedicineModel
@@ -15,6 +17,7 @@ import com.safakkurt.eczaneotomasyonu.kisilermv.service.DebtorAPI
 import com.safakkurt.eczaneotomasyonu.kisilermv.view.DetailsActivity
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.Serializable
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,7 +32,10 @@ class MainActivity : AppCompatActivity() {
     private var ilacIdArrayList=ArrayList<String>()
     private var medicineNameArrayList = ArrayList<String>()
     private var medicinePriceArrayList = ArrayList<String>()
-    private var sendAllMedicineInfosArrayList = ArrayList<String>()
+
+    private var sendMedicineNameArrayList = ArrayList<String>()
+    private var sendMedicinePriceArrayList = ArrayList<String>()
+    private var sendMedicineQuantityArrayList = ArrayList<String>()
 
 
 
@@ -143,19 +149,23 @@ class MainActivity : AppCompatActivity() {
                                             val medicineIdSirasi=ilacIdArrayList.indexOf(ilacIdDebtor).toString()
                                             val medicine= medicineNameArrayList.get(medicineIdSirasi.toInt())
                                             val medicinePrice=medicinePriceArrayList.get(medicineIdSirasi.toInt())
-                                            sendAllMedicineInfosArrayList.add(k,
-                                                "İLAÇ İSMİ: $medicine \nİLACIN FİYATI: $medicinePrice \nKAÇ ADET: $medicineQuantity \n\n"
-                                            )
+
+                                            sendMedicineNameArrayList.add(k,medicine)
+                                            sendMedicinePriceArrayList.add(k,medicinePrice)
+                                            sendMedicineQuantityArrayList.add(k,medicineQuantity)
 
 
                                         }
-
+                                        println("ilaç ismi gönderilen: ${sendMedicineNameArrayList.toString()}")
                                         val intent=Intent(this@MainActivity,DetailsActivity::class.java)
                                         intent.putExtra("name",name)
                                         intent.putExtra("status",status)
                                         intent.putExtra("tcNo",tcNo)
+                                        intent.putExtra("medicineName",sendMedicineNameArrayList as Serializable)
+                                        intent.putExtra("medicinePrice",sendMedicinePriceArrayList as Serializable)
+                                        intent.putExtra("medicineQuantity",sendMedicineQuantityArrayList as Serializable)
+                                        intent.putExtra("xAdet",kacAdetIlac)
 
-                                        intent.putExtra("all",sendAllMedicineInfosArrayList.toString())
 
                                         intent.putExtra("total",total)
 
@@ -184,5 +194,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+}
+
+private fun Intent.putParcelableArrayListExtra(s: String, sendMedicinePriceArrayList: ArrayList<String>) {
 
 }

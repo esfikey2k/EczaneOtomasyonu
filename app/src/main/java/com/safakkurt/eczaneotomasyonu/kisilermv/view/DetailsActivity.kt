@@ -2,12 +2,19 @@ package com.safakkurt.eczaneotomasyonu.kisilermv.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.safakkurt.eczaneotomasyonu.InfoMedicineRecycler
+import com.safakkurt.eczaneotomasyonu.R
+import com.safakkurt.eczaneotomasyonu.adapter.RecyclerViewAdapter
 import com.safakkurt.eczaneotomasyonu.databinding.ActivityDetailsBinding
-import java.io.Serializable
+import com.safakkurt.eczaneotomasyonu.kisilermv.model.DebtorModel
 import java.util.ArrayList
+
+
 
 class DetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
@@ -19,31 +26,36 @@ class DetailsActivity : AppCompatActivity() {
         val status=intent.getStringExtra("status")
         val tc=intent.getStringExtra("tcNo")
         val total=intent.getStringExtra("total")
-        var all= intent.getStringExtra("all")
-        //var medicine=intent.getStringExtra("liste")
-        //var medicine=intent.getStringArrayListExtra("liste")--
-        //val price=intent.getStringExtra("price")
-        //val quantity=intent.getStringExtra("quantity")
-        //medicine= medicine?.plus(" $price") as ArrayList<String>?--
-        /*if (medicine != null) {
-            medicine= medicine.subSequence(1,medicine.length-1).toString()
-        }*/
 
+        val medicineName: ArrayList<String> = intent.getSerializableExtra("medicineName") as ArrayList<String>
+        val medicinePrice: ArrayList<String> = intent.getSerializableExtra("medicinePrice") as ArrayList<String>
+        val medicineQuantity: ArrayList<String> = intent.getSerializableExtra("medicineQuantity") as ArrayList<String>
+        val xAdet = intent.getIntExtra("xAdet",0)
+
+        /*
+        var all= intent.getStringExtra("all")
         if (all != null) {
             all= all.subSequence(1,all.length-1).toString()
             all= all.replace(","," ")
 
-        }
+        }*/
 
 
         binding.textViewTc.text=tc.toString()
         binding.textViewName.text=name.toString()
         binding.textViewStatus.text=status.toString()
-        binding.textViewTotal.text=total.toString()
-        binding.textViewMedicineName.text=all.toString()
-       /*binding.textViewPrice.text=price.toString()
-        binding.textViewMedicineName.text=medicine.toString()
-        binding.textViewQuantity.text=quantity.toString()*/
+        binding.textViewTotal.text="${total.toString()} ₺"
+        binding.textViewToplamIlac.text=xAdet.toString()
+
+        binding.recyclerView.layoutManager=LinearLayoutManager(this)
+        val medicineAdapter = RecyclerViewAdapter(medicineName,medicineQuantity)
+        binding.recyclerView.adapter=medicineAdapter
+
     }
+
+
 }
+
+
+
 
