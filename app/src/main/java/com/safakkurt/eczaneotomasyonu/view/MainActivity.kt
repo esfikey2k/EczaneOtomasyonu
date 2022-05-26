@@ -3,9 +3,7 @@ package com.safakkurt.eczaneotomasyonu.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
 import android.widget.Toast
-import com.safakkurt.eczaneotomasyonu.InfoMedicineRecycler
 
 import com.safakkurt.eczaneotomasyonu.databinding.ActivityMainBinding
 import com.safakkurt.eczaneotomasyonu.ilaclarmv.imodel.MedicineModel

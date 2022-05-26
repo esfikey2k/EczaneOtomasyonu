@@ -2,12 +2,9 @@ package com.safakkurt.eczaneotomasyonu.kisilermv.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.safakkurt.eczaneotomasyonu.InfoMedicineRecycler
-import com.safakkurt.eczaneotomasyonu.R
+import androidx.recyclerview.widget.GridLayoutManager
 import com.safakkurt.eczaneotomasyonu.adapter.RecyclerViewAdapter
 import com.safakkurt.eczaneotomasyonu.databinding.ActivityDetailsBinding
-import com.safakkurt.eczaneotomasyonu.kisilermv.model.DebtorModel
 import java.util.ArrayList
 
 
@@ -47,7 +44,8 @@ class DetailsActivity : AppCompatActivity() {
         binding.textViewTotal.text="${total.toString()} ₺"
         binding.textViewToplamIlac.text=xAdet.toString()
 
-        binding.recyclerView.layoutManager=LinearLayoutManager(this)
+        //binding.recyclerView.layoutManager=LinearLayoutManager(this)
+        binding.recyclerView.layoutManager=GridLayoutManager(this,2)
         val medicineAdapter = RecyclerViewAdapter(medicineName,medicineQuantity)
         binding.recyclerView.adapter=medicineAdapter
 
