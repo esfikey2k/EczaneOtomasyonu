@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val BASE_URL="https://eczane-otomasyon.herokuapp.com/"
+    private val BURL="https://eczane-otomasyon.herokuapp.com"
     //private val BASE_URL="https://api.npoint.io/"  -> eski api
     //https://eczane-otomasyon.herokuapp.com/api/debts?api_key=ffrIFx793Vk880cye2S71cCVUiQSLfq8  kisiler apisi
     //https://eczane-otomasyon.herokuapp.com/api/medicine?api_key=ffrIFx793Vk880cye2S71cCVUiQSLfq8 ilaclar apisi
@@ -29,8 +30,9 @@ class MainActivity : AppCompatActivity() {
     private var tcArrayList=ArrayList<String>()
     private var ilacIdArrayList=ArrayList<String>()
     private var medicineNameArrayList = ArrayList<String>()
+    private var medicineUrlArrayList = ArrayList<String>()
     private var medicinePriceArrayList = ArrayList<String>()
-
+    private var sendMedicineImageUrl = ArrayList<String>()
     private var sendMedicineNameArrayList = ArrayList<String>()
     private var sendMedicinePriceArrayList = ArrayList<String>()
     private var sendMedicineQuantityArrayList = ArrayList<String>()
@@ -79,6 +81,7 @@ class MainActivity : AppCompatActivity() {
                                 ilacIdArrayList.add(medicineModels!![i]._id)
                                 medicineNameArrayList.add(medicineModels!![i].name.toString())
                                 medicinePriceArrayList.add(medicineModels!![i].price.numberDecimal.toString())
+                                medicineUrlArrayList.add(BURL.plus(medicineModels!![i].image.toString()))
                             }
 
 
@@ -116,7 +119,7 @@ class MainActivity : AppCompatActivity() {
                         debtorModels?.let {
 
 
-                            //Toast.makeText(this@MainActivity,"veriler geldi!",Toast.LENGTH_LONG).show()
+
                             binding.buttonLogin.setOnClickListener {
 
 
@@ -147,10 +150,13 @@ class MainActivity : AppCompatActivity() {
                                             val medicineIdSirasi=ilacIdArrayList.indexOf(ilacIdDebtor).toString()
                                             val medicine= medicineNameArrayList.get(medicineIdSirasi.toInt())
                                             val medicinePrice=medicinePriceArrayList.get(medicineIdSirasi.toInt())
+                                            val medicineUrl=medicineUrlArrayList.get(medicineIdSirasi.toInt())
 
                                             sendMedicineNameArrayList.add(k,medicine)
                                             sendMedicinePriceArrayList.add(k,medicinePrice)
                                             sendMedicineQuantityArrayList.add(k,medicineQuantity)
+                                            sendMedicineImageUrl.add(k,medicineUrl)
+
 
 
                                         }
@@ -162,6 +168,7 @@ class MainActivity : AppCompatActivity() {
                                         intent.putExtra("medicineName",sendMedicineNameArrayList as Serializable)
                                         intent.putExtra("medicinePrice",sendMedicinePriceArrayList as Serializable)
                                         intent.putExtra("medicineQuantity",sendMedicineQuantityArrayList as Serializable)
+                                        intent.putExtra("medicineUrl",sendMedicineImageUrl as Serializable)
                                         intent.putExtra("xAdet",kacAdetIlac)
 
 
