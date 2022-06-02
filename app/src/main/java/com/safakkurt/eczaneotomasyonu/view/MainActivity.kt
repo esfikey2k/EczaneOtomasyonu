@@ -32,10 +32,15 @@ class MainActivity : AppCompatActivity() {
     private var medicineNameArrayList = ArrayList<String>()
     private var medicineUrlArrayList = ArrayList<String>()
     private var medicinePriceArrayList = ArrayList<String>()
+    private var medicineTypeArrayList = ArrayList<String>()
+    private var medicineDescriptionArrayList = ArrayList<String>()
+    private var sendMedicineTypeArrayList = ArrayList<String>()
+    private var sendMedicineDescriptionArrayList = ArrayList<String>()
     private var sendMedicineImageUrl = ArrayList<String>()
     private var sendMedicineNameArrayList = ArrayList<String>()
     private var sendMedicinePriceArrayList = ArrayList<String>()
     private var sendMedicineQuantityArrayList = ArrayList<String>()
+
 
 
 
@@ -82,6 +87,8 @@ class MainActivity : AppCompatActivity() {
                                 medicineNameArrayList.add(medicineModels!![i].name.toString())
                                 medicinePriceArrayList.add(medicineModels!![i].price.numberDecimal.toString())
                                 medicineUrlArrayList.add(BURL.plus(medicineModels!![i].image.toString()))
+                                medicineTypeArrayList.add(medicineModels!![i].medicineType.toString())
+                                medicineDescriptionArrayList.add(medicineModels!![i].description.toString())
                             }
 
 
@@ -151,11 +158,15 @@ class MainActivity : AppCompatActivity() {
                                             val medicine= medicineNameArrayList.get(medicineIdSirasi.toInt())
                                             val medicinePrice=medicinePriceArrayList.get(medicineIdSirasi.toInt())
                                             val medicineUrl=medicineUrlArrayList.get(medicineIdSirasi.toInt())
+                                            val medicineDescription= medicineDescriptionArrayList.get(medicineIdSirasi.toInt())
+                                            val medicineType= medicineTypeArrayList.get(medicineIdSirasi.toInt())
 
                                             sendMedicineNameArrayList.add(k,medicine)
                                             sendMedicinePriceArrayList.add(k,medicinePrice)
                                             sendMedicineQuantityArrayList.add(k,medicineQuantity)
                                             sendMedicineImageUrl.add(k,medicineUrl)
+                                            sendMedicineDescriptionArrayList.add(k,medicineDescription)
+                                            sendMedicineTypeArrayList.add(k,medicineType)
 
 
 
@@ -169,6 +180,8 @@ class MainActivity : AppCompatActivity() {
                                         intent.putExtra("medicinePrice",sendMedicinePriceArrayList as Serializable)
                                         intent.putExtra("medicineQuantity",sendMedicineQuantityArrayList as Serializable)
                                         intent.putExtra("medicineUrl",sendMedicineImageUrl as Serializable)
+                                        intent.putExtra("medicineType",sendMedicineTypeArrayList as Serializable)
+                                        intent.putExtra("medicineDescription",sendMedicineDescriptionArrayList as Serializable)
                                         intent.putExtra("xAdet",kacAdetIlac)
 
 

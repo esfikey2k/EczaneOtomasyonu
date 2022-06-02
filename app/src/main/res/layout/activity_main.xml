@@ -7,69 +7,76 @@
     android:background="@color/loginBackgroundColor"
     tools:context=".view.MainActivity">
 
-    <EditText
-        android:id="@+id/editTextTc"
-        android:layout_width="275dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
-        android:background="@drawable/custom_input"
-        android:ems="10"
-        android:hint="TC Kimlik No"
-
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:paddingLeft="10dp"
-        android:textColorHint="#5E5E5E"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <Button
-        android:id="@+id/buttonLogin"
-        android:layout_width="275dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="252dp"
-        android:background="@drawable/custom_button"
-        android:text="GİRİŞ YAP"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </Button>
-
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="275dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/custom_input"
-        android:ems="10"
-        android:hint="Şifre"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:paddingLeft="10dp"
-        android:textColorHint="#5E5E5E"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTc" />
 
     <TextView
         android:id="@+id/textViewEczaneText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="136dp"
         android:gravity="center"
         android:text="ECZANE\nOTOMASYONU"
         android:textColor="@color/loginTextColor"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEczaneText">
+
+
+        <EditText
+            android:id="@+id/editTextTc"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/custom_input"
+            android:ems="10"
+            android:hint="TC Kimlik No"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:paddingLeft="10dp"
+            android:textColorHint="#5E5E5E"
+            tools:layout_editor_absoluteX="59dp"
+            tools:layout_editor_absoluteY="280dp" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/custom_input"
+            android:ems="10"
+            android:hint="Şifre"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:paddingLeft="10dp"
+            android:textColorHint="#5E5E5E"
+            tools:layout_editor_absoluteX="59dp"
+            tools:layout_editor_absoluteY="352dp" />
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
+            android:text="GİRİŞ YAP"
+            android:textColor="@color/white"
+            tools:layout_editor_absoluteX="59dp"
+            tools:layout_editor_absoluteY="456dp">
+
+        </Button>
+
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

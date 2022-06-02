@@ -51,6 +51,8 @@ class DetailsActivity : AppCompatActivity() {
         val medicinePrice: ArrayList<String> = intent.getSerializableExtra("medicinePrice") as ArrayList<String>
         val medicineQuantity: ArrayList<String> = intent.getSerializableExtra("medicineQuantity") as ArrayList<String>
         val medicineImageUrl:ArrayList<String> = intent.getStringArrayListExtra("medicineUrl") as ArrayList<String>
+        val medicineType: ArrayList<String> = intent.getSerializableExtra("medicineType") as ArrayList<String>
+        val medicineDescription:ArrayList<String> = intent.getSerializableExtra("medicineDescription") as ArrayList<String>
         val xAdet = intent.getIntExtra("xAdet",0)
 
         println(medicineImageUrl)
@@ -63,7 +65,7 @@ class DetailsActivity : AppCompatActivity() {
 
 
         binding.recyclerView.layoutManager=GridLayoutManager(this,2)
-        val medicineAdapter = RecyclerViewAdapter(medicineName,medicineQuantity,medicineImageUrl)
+        val medicineAdapter = RecyclerViewAdapter(medicineName,medicineQuantity,medicineImageUrl,medicinePrice,medicineType,medicineDescription)
         binding.recyclerView.adapter=medicineAdapter
 
     }
