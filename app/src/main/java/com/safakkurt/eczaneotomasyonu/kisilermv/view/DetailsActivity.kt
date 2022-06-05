@@ -23,25 +23,8 @@ class DetailsActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.buttonExitDetails.setOnClickListener {
-
-            val alertDialog=AlertDialog.Builder(this@DetailsActivity)
-            alertDialog.setTitle("Çıkış İşlemi")
-            alertDialog.setMessage("Çıkış yapmak istediğinizden emin misiniz?")
-            alertDialog.setPositiveButton("Evet"){dialog,which->
-                val intent=Intent(this@DetailsActivity,MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-            alertDialog.setNegativeButton("Hayır"){dialog,which->
-                Toast.makeText(this@DetailsActivity,"Çıkış işlemi iptal edildi!",Toast.LENGTH_SHORT).show()
-            }
-            alertDialog.show()
-
-
-        }
-
         val intent=intent
+
         val name=intent.getStringExtra("name")
         val status=intent.getStringExtra("status")
         val tc=intent.getStringExtra("tcNo")
@@ -67,6 +50,25 @@ class DetailsActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager=GridLayoutManager(this,2)
         val medicineAdapter = RecyclerViewAdapter(medicineName,medicineQuantity,medicineImageUrl,medicinePrice,medicineType,medicineDescription)
         binding.recyclerView.adapter=medicineAdapter
+
+        binding.buttonExitDetails.setOnClickListener {
+
+            val alertDialog=AlertDialog.Builder(this@DetailsActivity)
+            alertDialog.setTitle("Çıkış İşlemi")
+            alertDialog.setMessage("Çıkış yapmak istediğinizden emin misiniz?")
+            alertDialog.setPositiveButton("Evet"){dialog,which->
+                val intent=Intent(this@DetailsActivity,MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            alertDialog.setNegativeButton("Hayır"){dialog,which->
+                Toast.makeText(this@DetailsActivity,"Çıkış işlemi iptal edildi!",Toast.LENGTH_SHORT).show()
+            }
+            alertDialog.show()
+
+
+        }
+
 
     }
 

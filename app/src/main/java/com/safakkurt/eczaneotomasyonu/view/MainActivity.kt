@@ -125,79 +125,80 @@ class MainActivity : AppCompatActivity() {
                         debtorModels=ArrayList(it)
                         debtorModels?.let {
 
-
-
                             binding.buttonLogin.setOnClickListener {
 
+                                try {
 
-                                val lengthOfList=debtorModels!!.size-1
+                                    val lengthOfList=debtorModels!!.size-1
 
-                                for(i in 0..lengthOfList){
+                                    for(i in 0..lengthOfList){
 
-                                    tcArrayList.add(debtorModels!![i].tc)
-                                }
-
-                                val editTextTc = binding.editTextTc.text.toString()
-                                val editTextSifre = binding.editTextPassword.text.toString()
-                                val sira= tcArrayList.indexOf(editTextTc).toString()
-                                val tcNo=tcArrayList.get(sira.toInt())
-                                if(editTextTc.isNotEmpty() && editTextSifre.isNotEmpty()){
-                                    if(editTextTc==tcNo.toString() && editTextSifre==tcNo.toString()){
-
-                                        val name=debtorModels!![sira.toInt()].name.toString()
-                                        val status=debtorModels!![sira.toInt()].status.toString()
-                                        val total=debtorModels!![sira.toInt()].total.numberDecimal.toString()
-
-                                        val kacAdetIlac= debtorModels!![sira.toInt()].medicine.size
-                                        val kacAdetIlacUzunlugu= kacAdetIlac-1
-
-                                        for(k in 0..kacAdetIlacUzunlugu){
-                                            val ilacIdDebtor= debtorModels!![sira.toInt()].medicine.get(k).ilac.toString()
-                                            val medicineQuantity=debtorModels!![sira.toInt()].medicine.get(k).quantity.toString()
-                                            val medicineIdSirasi=ilacIdArrayList.indexOf(ilacIdDebtor).toString()
-                                            val medicine= medicineNameArrayList.get(medicineIdSirasi.toInt())
-                                            val medicinePrice=medicinePriceArrayList.get(medicineIdSirasi.toInt())
-                                            val medicineUrl=medicineUrlArrayList.get(medicineIdSirasi.toInt())
-                                            val medicineDescription= medicineDescriptionArrayList.get(medicineIdSirasi.toInt())
-                                            val medicineType= medicineTypeArrayList.get(medicineIdSirasi.toInt())
-
-                                            sendMedicineNameArrayList.add(k,medicine)
-                                            sendMedicinePriceArrayList.add(k,medicinePrice)
-                                            sendMedicineQuantityArrayList.add(k,medicineQuantity)
-                                            sendMedicineImageUrl.add(k,medicineUrl)
-                                            sendMedicineDescriptionArrayList.add(k,medicineDescription)
-                                            sendMedicineTypeArrayList.add(k,medicineType)
-
-
-
-                                        }
-                                        println("ilaç ismi gönderilen: ${sendMedicineNameArrayList.toString()}")
-                                        val intent=Intent(this@MainActivity,DetailsActivity::class.java)
-                                        intent.putExtra("name",name)
-                                        intent.putExtra("status",status)
-                                        intent.putExtra("tcNo",tcNo)
-                                        intent.putExtra("medicineName",sendMedicineNameArrayList as Serializable)
-                                        intent.putExtra("medicinePrice",sendMedicinePriceArrayList as Serializable)
-                                        intent.putExtra("medicineQuantity",sendMedicineQuantityArrayList as Serializable)
-                                        intent.putExtra("medicineUrl",sendMedicineImageUrl as Serializable)
-                                        intent.putExtra("medicineType",sendMedicineTypeArrayList as Serializable)
-                                        intent.putExtra("medicineDescription",sendMedicineDescriptionArrayList as Serializable)
-                                        intent.putExtra("xAdet",kacAdetIlac)
-
-
-                                        intent.putExtra("total",total)
-
-                                        startActivity(intent)
-                                        finish()
-                                    }else{
-                                        Toast.makeText(this@MainActivity,"TC YA DA ŞİFRE YANLIŞ!",Toast.LENGTH_LONG).show()
+                                        tcArrayList.add(debtorModels!![i].tc)
                                     }
-                                }else{
-                                    Toast.makeText(this@MainActivity,"TC YA DA ŞİFRE BOŞ!",Toast.LENGTH_LONG).show()
+
+                                    val editTextTc = binding.editTextTc.text.toString()
+                                    val editTextSifre = binding.editTextPassword.text.toString()
+                                    val sira= tcArrayList.indexOf(editTextTc).toString()
+                                    val tcNo=tcArrayList.get(sira.toInt())
+
+
+                                    if(editTextTc.isNotEmpty() && editTextSifre.isNotEmpty()){
+                                        if(editTextTc==tcNo.toString() && editTextSifre==tcNo.toString()){
+
+                                            val name=debtorModels!![sira.toInt()].name.toString()
+                                            val status=debtorModels!![sira.toInt()].status.toString()
+                                            val total=debtorModels!![sira.toInt()].total.numberDecimal.toString()
+
+                                            val kacAdetIlac= debtorModels!![sira.toInt()].medicine.size
+                                            val kacAdetIlacUzunlugu= kacAdetIlac-1
+
+                                            for(k in 0..kacAdetIlacUzunlugu){
+                                                val ilacIdDebtor= debtorModels!![sira.toInt()].medicine.get(k).ilac.toString()
+                                                val medicineQuantity=debtorModels!![sira.toInt()].medicine.get(k).quantity.toString()
+                                                val medicineIdSirasi=ilacIdArrayList.indexOf(ilacIdDebtor).toString()
+                                                val medicine= medicineNameArrayList.get(medicineIdSirasi.toInt())
+                                                val medicinePrice=medicinePriceArrayList.get(medicineIdSirasi.toInt())
+                                                val medicineUrl=medicineUrlArrayList.get(medicineIdSirasi.toInt())
+                                                val medicineDescription= medicineDescriptionArrayList.get(medicineIdSirasi.toInt())
+                                                val medicineType= medicineTypeArrayList.get(medicineIdSirasi.toInt())
+
+                                                sendMedicineNameArrayList.add(k,medicine)
+                                                sendMedicinePriceArrayList.add(k,medicinePrice)
+                                                sendMedicineQuantityArrayList.add(k,medicineQuantity)
+                                                sendMedicineImageUrl.add(k,medicineUrl)
+                                                sendMedicineDescriptionArrayList.add(k,medicineDescription)
+                                                sendMedicineTypeArrayList.add(k,medicineType)
+
+
+
+                                            }
+                                            println("ilaç ismi gönderilen: ${sendMedicineNameArrayList.toString()}")
+                                            val intent=Intent(this@MainActivity,DetailsActivity::class.java)
+                                            intent.putExtra("name",name)
+                                            intent.putExtra("status",status)
+                                            intent.putExtra("tcNo",tcNo)
+                                            intent.putExtra("medicineName",sendMedicineNameArrayList as Serializable)
+                                            intent.putExtra("medicinePrice",sendMedicinePriceArrayList as Serializable)
+                                            intent.putExtra("medicineQuantity",sendMedicineQuantityArrayList as Serializable)
+                                            intent.putExtra("medicineUrl",sendMedicineImageUrl as Serializable)
+                                            intent.putExtra("medicineType",sendMedicineTypeArrayList as Serializable)
+                                            intent.putExtra("medicineDescription",sendMedicineDescriptionArrayList as Serializable)
+                                            intent.putExtra("xAdet",kacAdetIlac)
+                                            intent.putExtra("total",total)
+                                            startActivity(intent)
+                                            finish()
+                                        }else{
+                                            Toast.makeText(this@MainActivity,"TC YA DA ŞİFRE YANLIŞ!",Toast.LENGTH_LONG).show()
+                                        }
+                                    }else{
+                                        Toast.makeText(this@MainActivity,"TC YA DA ŞİFRE BOŞ!",Toast.LENGTH_LONG).show()
+                                    }
+                                }catch (e:Exception){
+                                    e.printStackTrace()
                                 }
+
 
                             }
-
 
                         }
                     }
