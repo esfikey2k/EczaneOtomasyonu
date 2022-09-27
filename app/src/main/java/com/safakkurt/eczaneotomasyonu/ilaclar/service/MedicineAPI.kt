@@ -1,6 +1,6 @@
-package com.safakkurt.eczaneotomasyonu.ilaclarmv.iservice
+package com.safakkurt.eczaneotomasyonu.ilaclar.service
 
-import com.safakkurt.eczaneotomasyonu.ilaclarmv.imodel.MedicineModel
+import com.safakkurt.eczaneotomasyonu.ilaclar.model.MedicineModel
 import retrofit2.Call
 import retrofit2.http.GET
 

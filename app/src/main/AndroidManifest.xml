@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".kisilermv.view.DetailsActivity"
+            android:name=".kisiler.view.DetailsActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"

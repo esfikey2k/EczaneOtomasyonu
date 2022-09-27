@@ -1,8 +1,8 @@
-package com.safakkurt.eczaneotomasyonu.kisilermv.service
+package com.safakkurt.eczaneotomasyonu.kisiler.service
 
 
 
-import com.safakkurt.eczaneotomasyonu.kisilermv.model.DebtorModel
+import com.safakkurt.eczaneotomasyonu.kisiler.model.DebtorModel
 import retrofit2.Call
 import retrofit2.http.GET
 

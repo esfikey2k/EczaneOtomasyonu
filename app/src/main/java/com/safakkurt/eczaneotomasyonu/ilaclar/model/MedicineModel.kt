@@ -1,4 +1,4 @@
-package com.safakkurt.eczaneotomasyonu.ilaclarmv.imodel
+package com.safakkurt.eczaneotomasyonu.ilaclar.model
 
 import com.google.gson.annotations.SerializedName
 

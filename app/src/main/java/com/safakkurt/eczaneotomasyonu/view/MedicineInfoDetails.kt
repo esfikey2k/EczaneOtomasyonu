@@ -1,10 +1,8 @@
 package com.safakkurt.eczaneotomasyonu.view
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.safakkurt.eczaneotomasyonu.databinding.ActivityMedicineInfoDetailsBinding
-import com.safakkurt.eczaneotomasyonu.kisilermv.view.DetailsActivity
 import com.squareup.picasso.Picasso
 
 class MedicineInfoDetails : AppCompatActivity() {

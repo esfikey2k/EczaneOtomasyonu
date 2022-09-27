@@ -3,16 +3,16 @@ package com.safakkurt.eczaneotomasyonu.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 
 import com.safakkurt.eczaneotomasyonu.databinding.ActivityMainBinding
-import com.safakkurt.eczaneotomasyonu.ilaclarmv.imodel.MedicineModel
-import com.safakkurt.eczaneotomasyonu.ilaclarmv.iservice.MedicineAPI
+import com.safakkurt.eczaneotomasyonu.ilaclar.model.MedicineModel
+import com.safakkurt.eczaneotomasyonu.ilaclar.service.MedicineAPI
 
-import com.safakkurt.eczaneotomasyonu.kisilermv.model.DebtorModel
+import com.safakkurt.eczaneotomasyonu.kisiler.model.DebtorModel
 
-import com.safakkurt.eczaneotomasyonu.kisilermv.service.DebtorAPI
-import com.safakkurt.eczaneotomasyonu.kisilermv.view.DetailsActivity
+import com.safakkurt.eczaneotomasyonu.kisiler.service.DebtorAPI
+import com.safakkurt.eczaneotomasyonu.kisiler.view.DetailsActivity
+import com.safakkurt.eczaneotomasyonu.toastMessage
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.Serializable
@@ -22,9 +22,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val BASE_URL="https://eczane-otomasyon.herokuapp.com/"
     private val BURL="https://eczane-otomasyon.herokuapp.com"
-    //private val BASE_URL="https://api.npoint.io/"  -> eski api
-    //https://eczane-otomasyon.herokuapp.com/api/debts?api_key=ffrIFx793Vk880cye2S71cCVUiQSLfq8  kisiler apisi
-    //https://eczane-otomasyon.herokuapp.com/api/medicine?api_key=ffrIFx793Vk880cye2S71cCVUiQSLfq8 ilaclar apisi
     private var debtorModels:ArrayList<DebtorModel>?=null
     private var medicineModels:ArrayList<MedicineModel>?=null
     private var tcArrayList=ArrayList<String>()
@@ -188,10 +185,10 @@ class MainActivity : AppCompatActivity() {
                                             startActivity(intent)
                                             finish()
                                         }else{
-                                            Toast.makeText(this@MainActivity,"TC YA DA ŞİFRE YANLIŞ!",Toast.LENGTH_LONG).show()
+                                            toastMessage("TC YA DA ŞİFRE YANLIŞ!")
                                         }
                                     }else{
-                                        Toast.makeText(this@MainActivity,"TC YA DA ŞİFRE BOŞ!",Toast.LENGTH_LONG).show()
+                                        toastMessage("TC YA DA ŞİFRE BOŞ!")
                                     }
                                 }catch (e:Exception){
                                     e.printStackTrace()
@@ -214,8 +211,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-}
 
-private fun Intent.putParcelableArrayListExtra(s: String, sendMedicinePriceArrayList: ArrayList<String>) {
 
 }

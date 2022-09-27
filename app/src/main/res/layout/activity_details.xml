@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/details"
-    tools:context=".kisilermv.view.DetailsActivity">
+    tools:context=".kisiler.view.DetailsActivity">
 
 
     <androidx.cardview.widget.CardView

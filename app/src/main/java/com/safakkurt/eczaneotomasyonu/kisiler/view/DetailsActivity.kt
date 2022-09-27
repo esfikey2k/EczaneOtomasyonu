@@ -1,13 +1,13 @@
-package com.safakkurt.eczaneotomasyonu.kisilermv.view
+package com.safakkurt.eczaneotomasyonu.kisiler.view
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import com.safakkurt.eczaneotomasyonu.adapter.RecyclerViewAdapter
 import com.safakkurt.eczaneotomasyonu.databinding.ActivityDetailsBinding
+import com.safakkurt.eczaneotomasyonu.toastMessage
 import com.safakkurt.eczaneotomasyonu.view.MainActivity
 import java.util.ArrayList
 
@@ -53,7 +53,7 @@ class DetailsActivity : AppCompatActivity() {
 
         binding.buttonExitDetails.setOnClickListener {
 
-            val alertDialog=AlertDialog.Builder(this@DetailsActivity)
+            val alertDialog= AlertDialog.Builder(this@DetailsActivity)
             alertDialog.setTitle("Çıkış İşlemi")
             alertDialog.setMessage("Çıkış yapmak istediğinizden emin misiniz?")
             alertDialog.setPositiveButton("Evet"){dialog,which->
@@ -62,7 +62,8 @@ class DetailsActivity : AppCompatActivity() {
                 finish()
             }
             alertDialog.setNegativeButton("Hayır"){dialog,which->
-                Toast.makeText(this@DetailsActivity,"Çıkış işlemi iptal edildi!",Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this@DetailsActivity,"Çıkış işlemi iptal edildi!",Toast.LENGTH_SHORT).show()
+                toastMessage("Çıkış işlemi iptal edildi!")
             }
             alertDialog.show()
 

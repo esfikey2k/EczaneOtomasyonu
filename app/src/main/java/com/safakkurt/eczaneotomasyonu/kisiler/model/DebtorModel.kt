@@ -1,7 +1,6 @@
-package com.safakkurt.eczaneotomasyonu.kisilermv.model
+package com.safakkurt.eczaneotomasyonu.kisiler.model
 
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
 
 data class DebtorModel(
     @SerializedName("tc")
